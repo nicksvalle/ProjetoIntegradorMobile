@@ -1,3 +1,93 @@
-<p>
-  manage-class-form works!
-</p>
+
+<div class="container">
+  <app-botao-logo></app-botao-logo>
+
+
+    <div class="card w-50 h-60 ">
+      <div class="card-body">
+
+        <div class="text-center">
+          <h1>Cadastrar Aula</h1>
+        </div>
+
+        <form class="row g-3" [formGroup]="formGroupClass" (ngSubmit)="save()">
+          <div class="col-md-6">
+            <label for="date" class="form-label">Data e horario da Aula</label>
+            <input type="datetime-local" class="form-control" id="date" formControlName="date" placeholder="Selecione a data e horario da aula...">
+
+            <small *ngIf="date.invalid && (date.dirty || date.touched)" class="text-danger">
+              <div *ngIf="date.errors?.['required']">Data é requerida.</div>
+              <div *ngIf="date.errors?.['invalidFormat']">Formato de data inválido.</div>
+            </small>
+          </div>
+
+          <div class="col-6">
+            <label for="room" class="form-label">Selecione a sala</label>
+            <select id="room" formControlName="room" class="form-select" multiple>
+              <option value="" selected disabled>Escolha uma Sala...</option>
+              <option *ngFor="let room of rooms" [value]="room.type + ' - ' + room.number">
+                  {{ room.type }} - {{ room.number }}
+              </option>
+          </select>
+
+            <small *ngIf="room.invalid && (room.dirty || room.touched)" class="text-danger">
+              <div *ngIf="room.errors?.['room']">Sala tem que ser válido.</div>
+            </small>
+          </div>
+
+          <div class="col-6">
+            <label for="course" class="form-label">Curso</label>
+            <select id="course" formControlName="course" class="form-select">
+                <option value="" selected disabled>Escolha um Curso...</option>
+                <option *ngFor="let course of courses" [value]="course.title">
+                    {{ course.title }}
+                </option>
+            </select>
+
+            <small *ngIf="course.invalid && (course.dirty || course.touched)" class="text-danger">
+                <div *ngIf="course.errors?.['required']">Curso é requirido.</div>
+                <div *ngIf="course.errors?.['course']">Curso tem que ser válido.</div>
+            </small>
+        </div>
+
+        <div class="col-6">
+            <label for="discipline" class="form-label">Selecione a disciplina</label>
+            <select id="discipline" formControlName="discipline" class="form-select">
+                <option value="" selected disabled>Escolha uma Disciplina...</option>
+                <option *ngFor="let course of courses" [value]="course.discipline">
+                    {{ course.discipline }}
+                </option>
+            </select>
+
+            <small *ngIf="discipline.invalid && (discipline.dirty || discipline.touched)" class="text-danger">
+                <div *ngIf="discipline.errors?.['required']">Disciplina é requirida.</div>
+                <div *ngIf="discipline.errors?.['discipline']">Disciplina tem que ser válida.</div>
+            </small>
+        </div>
+
+
+          <div class="col-md-5">
+            <label for="teacher" class="form-label">Professor</label>
+            <select id="teacher" formControlName="teacher" class="form-select">
+              <option value="" selected disabled>Escolha um Professor...</option>
+              <option *ngFor="let teacher of teachers" [value]="teacher.name">
+                {{ teacher.name }}
+              </option>
+            </select>
+
+            <small *ngIf="teacher.invalid && (teacher.dirty || teacher.touched)" class="text-danger">
+              <div *ngIf="teacher.errors?.['required']">Professor é requirido.</div>
+              <div *ngIf="teacher.errors?.['teacher']">Professor tem que ser válido.</div>
+            </small>
+          </div>
+
+          <div class="col-12"  style="margin-top: 50px;">
+            <button type="submit" class="btn btn-danger me-2" [disabled]="formGroupClass.invalid">Cadastrar</button>
+            <button type="button" class="btn btn-dark" (click)="cancel()">Limpar</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+</div>
+

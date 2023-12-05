@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 130vh;
+}
+
+.logo {
+  position: absolute;
+  width: 250px; /* Largura desejada */
+  height: 194px; /* Altura desejada */
+  left: 71px;
+  top: 10px;
+  background: url(img/fatec.png);
+  background-size: contain; /* Ajuste o tamanho da imagem para caber no contêiner */
+  background-repeat: no-repeat; /* Evita que a imagem de fundo se repita */
+}
+
+.button-exit {
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 50%;
+  padding: 0;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+
+  float: right;
+  margin: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4em;
+  height: 4em;
+
+  cursor: pointer;
+}
+
+.button-exit svg {
+  width: 70%;
+  height: auto;
+  fill: black;
+}
+
+.exit-text{
+  position: absolute;
+  top: 110px; /* Adiciona espaço entre o botão e o texto */
+  right: 48px;
+  font-family: "Arial", sans-serif; /* Defina a fonte desejada */
+  font-size: 20px; /* Tamanho da fonte do texto */
+  color: black; /* Cor do texto */
+  font-weight: bold;
+}
+
+.icon {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}

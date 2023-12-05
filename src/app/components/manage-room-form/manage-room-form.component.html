@@ -1,3 +1,57 @@
-<p>
-  manage-room-form works!
-</p>
+
+<div class="container">
+  <app-botao-logo></app-botao-logo>
+
+
+    <div class="card w-50 h-60 ">
+      <div class="card-body">
+
+        <div class="text-center">
+          <h1>Cadastrar Sala</h1>
+        </div>
+
+        <form class="row g-3" [formGroup]="formGroupRoom" (ngSubmit)="save()">
+          <div class="col-md-5">
+            <label for="type" class="form-label">Tipo de sala</label>
+            <select id="type" formControlName="type" class="form-select">
+              <option value="" selected disabled>Escolha um tipo...</option>
+              <option *ngFor="let tipo of tipo" [value]="tipo.name">
+                {{ tipo.name }}
+              </option>
+            </select>
+
+            <small *ngIf="type.invalid && (type.dirty || type.touched)" class="text-danger">
+              <div *ngIf="type.errors?.['required']">Tipo é requirido.</div>
+              <div *ngIf="type.errors?.['type']">Tipo tem que ser válido.</div>
+            </small>
+          </div>
+
+          <div class="col-6">
+            <label for="capacity" class="form-label">Capacidade da sala</label>
+            <input type="number" class="form-control" id="capacity" formControlName="capacity" placeholder="Escreva a capacidade da sala" #inputCalendar>
+
+            <small *ngIf="capacity.invalid && (capacity.dirty || capacity.touched)" class="text-danger">
+              <div *ngIf="capacity.errors?.['required']">Capacidade da sala é requirido.</div>
+              <div *ngIf="capacity.errors?.['capacity']">Capacidade da sala tem que ser válido.</div>
+            </small>
+          </div>
+
+          <div class="col-5">
+            <label for="number" class="form-label">Número da sala</label>
+            <input type="number" class="form-control" id="number" formControlName="number" placeholder="Escreva o número da sala" #inputCalendar>
+
+            <small *ngIf="number.invalid && (number.dirty || number.touched)" class="text-danger">
+              <div *ngIf="number.errors?.['required']">Número da sala é requirido.</div>
+              <div *ngIf="number.errors?.['number']">Número da sala tem que ser válido.</div>
+            </small>
+          </div>
+
+          <div class="col-12"  style="margin-top: 50px;">
+            <button type="submit" class="btn btn-danger me-2" [disabled]="formGroupRoom.invalid">Cadastrar</button>
+            <button type="button" class="btn btn-dark" (click)="cancel()">Cancelar</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+</div>

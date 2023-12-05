@@ -5,10 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './menu-coordenador.component.html',
   styleUrls: ['./menu-coordenador.component.scss'],
 })
-export class MenuCoordenadorComponent  implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {}
+export class MenuCoordenadorComponent {
 
 }

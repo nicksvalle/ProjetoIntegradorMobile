@@ -1,3 +1,94 @@
-<p>
-  manage-course-form works!
-</p>
+
+<div class="container">
+  <app-botao-logo></app-botao-logo>
+
+
+    <div class="card w-50 h-60 ">
+      <div class="card-body">
+
+        <div class="text-center">
+          <h1>Cadastrar Curso</h1>
+        </div>
+
+        <form class="row g-3" [formGroup]="formGroupCourse" (ngSubmit)="save()">
+          <div class="col-md-6">
+            <label for="title" class="form-label">Titulo do Curso</label>
+            <input type="tex" class="form-control" id="title" formControlName="title" placeholder="Digite o título do curso...">
+
+            <small *ngIf="title.invalid && (title.dirty || title.touched)" class="text-danger">
+              <div *ngIf="title.errors?.['required']">Titulo é requirido.</div>
+              <div *ngIf="title.errors?.['title']">Titulo tem que ser válido.</div>
+            </small>
+          </div>
+
+          <div class="col-6">
+            <label for="course" class="form-label">Sigla do Curso</label>
+            <input type="course" class="form-control" id="course" formControlName="course" placeholder="Escreva a descrição do curso" #inputCalendar>
+
+            <small *ngIf="course.invalid && (course.dirty || course.touched)" class="text-danger">
+              <div *ngIf="course.errors?.['required']">Curso é requirido.</div>
+              <div *ngIf="course.errors?.['course']">Curso tem que ser válido.</div>
+            </small>
+          </div>
+
+          <div class="col-6">
+            <label for="discipline" class="form-label">Disciplina</label>
+            <input type="discipline" class="form-control" id="discipline" formControlName="discipline" placeholder="Digite uma disciplina...">
+
+            <small *ngIf="discipline.invalid && (discipline.dirty || discipline.touched)" class="text-danger">
+              <div *ngIf="discipline.errors?.['required']">Disciplina é requirido.</div>
+              <div *ngIf="discipline.errors?.['discipline']">Disciplina tem que ser válido.</div>
+            </small>
+          </div>
+
+          <div class="col-6">
+            <label for="acronym" class="form-label">Sigla da Disciplina</label>
+            <input type="acronym" class="form-control" id="acronym" formControlName="acronym" placeholder="Digite uma disciplina...">
+
+            <small *ngIf="acronym.invalid && (acronym.dirty || acronym.touched)" class="text-danger">
+              <div *ngIf="acronym.errors?.['required']">Disciplina é requirido.</div>
+              <div *ngIf="acronym.errors?.['acronym']">Disciplina tem que ser válido.</div>
+            </small>
+          </div>
+
+
+          <div class="col-md-4">
+            <label for="teacher" class="form-label">Professor</label>
+            <select id="teacher" formControlName="teacher" class="form-select" multiple>
+              <option value="" selected disabled>Escolha um Professor...</option>
+              <option *ngFor="let teacher of teachers" [value]="teacher.name">
+                {{ teacher.name }}
+              </option>
+            </select>
+
+            <small *ngIf="teacher.invalid && (teacher.dirty || teacher.touched)" class="text-danger">
+              <div *ngIf="teacher.errors?.['required']">Professor é requirido.</div>
+              <div *ngIf="teacher.errors?.['teacher']">Professor tem que ser válido.</div>
+            </small>
+          </div>
+
+          <div class="col-md-4">
+            <label for="period" class="form-label">Periodo</label>
+            <select id="period" formControlName="period" class="form-select">
+              <option value="" selected disabled>Escolha um Periodo...</option>
+              <option *ngFor="let periodo of periodo" [value]="periodo.name">
+                {{ periodo.name }}
+              </option>
+            </select>
+
+            <small *ngIf="period.invalid && (period.dirty || period.touched)" class="text-danger">
+              <div *ngIf="period.errors?.['required']">Professor é requirido.</div>
+              <div *ngIf="period.errors?.['period']">Professor tem que ser válido.</div>
+            </small>
+          </div>
+
+          <div class="col-12"  style="margin-top: 50px;">
+            <button type="submit" class="btn btn-danger me-2" [disabled]="formGroupCourse.invalid">Cadastrar</button>
+            <button type="button" class="btn btn-dark" (click)="cancel()">Limpar</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+</div>
+
