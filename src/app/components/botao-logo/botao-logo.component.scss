@@ -1,12 +1,12 @@
 .logo {
   position: absolute;
-  width: 250px; /* Largura desejada */
-  height: 194px; /* Altura desejada */
-  left: 71px;
-  top: 10px;
-  background: url(img/fatec.png);
-  background-size: contain; /* Ajuste o tamanho da imagem para caber no contêiner */
-  background-repeat: no-repeat; /* Evita que a imagem de fundo se repita */
+  width: 250px;
+  height: 194px;
+  top: 15px;
+  left: 60px; 
+  background: url(/assets/icon/fatec.png) ;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .button-back {
